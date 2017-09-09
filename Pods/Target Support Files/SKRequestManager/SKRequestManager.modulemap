@@ -1,0 +1,6 @@
+framework module SKRequestManager {
+  umbrella header "SKRequestManager-umbrella.h"
+
+  export *
+  module * { export * }
+}

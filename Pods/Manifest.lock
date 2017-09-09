@@ -1,0 +1,22 @@
+PODS:
+  - Crashlytics (3.8.6):
+    - Fabric (~> 1.6.3)
+  - Fabric (1.6.13)
+  - Gloss (1.2.4)
+  - SKRequestManager (1.0.11)
+
+DEPENDENCIES:
+  - Crashlytics
+  - Fabric
+  - Gloss
+  - SKRequestManager
+
+SPEC CHECKSUMS:
+  Crashlytics: 95d05f4e4c19a771250c4bd9ce344d996de32bbf
+  Fabric: 2fb5676bc811af011a04513451f463dac6803206
+  Gloss: 4e036074610fdb993abcb958ebcd7332588e2333
+  SKRequestManager: b897a04d5bb16dbf8fe9b1bc050ebbdff3c3e3ba
+
+PODFILE CHECKSUM: d7da465083e5d97aea3bfd7dc4e67722ac226f28
+
+COCOAPODS: 1.2.1
