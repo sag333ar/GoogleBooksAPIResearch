@@ -138,11 +138,30 @@
                         <outlet property="infoLabel" destination="OHt-Jy-IaL" id="5JU-Qh-RNS"/>
                         <outlet property="searchBar" destination="yGI-Yw-mRI" id="1NE-AR-GLe"/>
                         <outlet property="tableView" destination="zds-IE-G0P" id="7LC-A7-nGR"/>
+                        <segue destination="8iG-lj-f8L" kind="show" identifier="booksToBooksDetailsSegue" customClass="BooksToBooksDetailsSegue" customModule="GoogleBooksApp" customModuleProvider="target" id="PZC-5s-aUe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="397.60000000000002" y="150.67466266866569"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="5ZH-F3-tJO">
+            <objects>
+                <viewController id="8iG-lj-f8L" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NX8-XJ-2vn"/>
+                        <viewControllerLayoutGuide type="bottom" id="NLO-y0-Fk0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xt5-ED-fO6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y8U-Wj-kZM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1164" y="151"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OhX-YV-XDN">

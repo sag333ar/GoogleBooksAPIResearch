@@ -74,4 +74,31 @@ class BooksListPresenter {
     }
   }
 
+  func getEditingAccessories(_ book: Book) -> [UITableViewRowAction] {
+    var readBooksArray:[String] = GoogleBooksSDK.shared.loadReadBooks()
+    if let bookid = book.id {
+      if readBooksArray.contains(bookid) {
+        let editAction = UITableViewRowAction(style: .normal, title: "Unread") { (rowAction, indexPath) in
+          if let index = readBooksArray.index(of: bookid) {
+            readBooksArray.remove(at: index)
+            GoogleBooksSDK.shared.saveReadBooks(readBooksArray)
+            self.view.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+          }
+        }
+        editAction.backgroundColor = UIColor.red
+        return [editAction]
+      } else {
+        let editAction = UITableViewRowAction(style: .normal, title: "Read") { (rowAction, indexPath) in
+          readBooksArray.append(bookid)
+          GoogleBooksSDK.shared.saveReadBooks(readBooksArray)
+          self.view.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+        }
+        editAction.backgroundColor = UIColor.blue
+        return [editAction]
+      }
+    } else {
+      return []
+    }
+  }
+  
 }

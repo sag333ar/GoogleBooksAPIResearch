@@ -12,8 +12,8 @@ public class GoogleBooksSDK: NSObject {
 
   static let shared = GoogleBooksSDK()
 
+  // MARK:- Book list / filter / search related
   private let getBooksList = GoogleBooksListService()
-
   private var getBooksListTask: URLSessionDataTask? = nil
 
   public func executeGetBooksList(_ query: String,
@@ -30,6 +30,17 @@ public class GoogleBooksSDK: NSObject {
                                                  filter: filter,
                                                  start: start,
                                                  handler: handler)
+  }
+
+  // MARK:- Key chain manager related
+  private let keyChainManager = KeyChainManager()
+
+  func loadReadBooks() -> [String] {
+    return self.keyChainManager.loadReadBooks()
+  }
+  
+  func saveReadBooks(_ bookIds: [String]) {
+    self.keyChainManager.saveReadBooks(bookIds)
   }
 
 }
