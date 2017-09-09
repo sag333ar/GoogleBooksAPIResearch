@@ -51,10 +51,12 @@
 	<string>v1</string>
 	<key>PATH</key>
 	<string>volumes</string>
-  <key>NSAppTransportSecurity</key>
-  <dict>
-    <key>NSAllowsArbitraryLoads</key>
-    <true/>
-  </dict>
+	<key>KEY</key>
+	<string>AIzaSyAhPjlqU0KO3dz1GBE0V0B2goZJxzoHX6s</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

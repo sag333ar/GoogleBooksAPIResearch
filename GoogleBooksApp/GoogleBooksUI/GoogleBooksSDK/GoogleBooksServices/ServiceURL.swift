@@ -15,6 +15,7 @@ public class ServiceURL {
   var context = "books"
   var version = "v1"
   var path = "volumes"
+  public var key = "AIzaSyAhPjlqU0KO3dz1GBE0V0B2goZJxzoHX6s"
 
   init() {
     if let infoData = Bundle.main.infoDictionary {
@@ -32,6 +33,9 @@ public class ServiceURL {
       }
       if let data = infoData["PATH"] as? String {
         self.path = data
+      }
+      if let data = infoData["KEY"] as? String {
+        self.key = data
       }
     }
   }

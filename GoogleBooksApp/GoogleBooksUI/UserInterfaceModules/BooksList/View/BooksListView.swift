@@ -8,48 +8,53 @@
 
 import UIKit
 import MBProgressHUD
+import TTGSnackbar
 
 class BooksListView: UIViewController {
 
+  // MARK:- Properties
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var searchBar: UISearchBar!
+  @IBOutlet weak var infoLabel: UILabel!
 
-  var responseGoogleBookList: GoogleBooksList? {
+  var presenter: BooksListPresenter!
+
+  var booksArray: [Book] = [] {
     didSet {
-      DispatchQueue.main.async {
-        if let list = self.responseGoogleBookList, let books = list.items {
-          self.booksArray = books
-          self.tableView.reloadData()
-        }
-      }
+      reloadTableView()
     }
   }
 
-  var booksArray: [Book] = []
-
+  // MARK:- Common functions
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    showHUD()
-    GoogleBooksSDK.shared.executeGetBooksList("a", filter: GoogleBooksFilter.free_ebooks) { (response) in
-      self.hideHUD()
-      switch response {
-      case .error(_ , let error):
-        print("Error occured \(error.localizedDescription)")
-      case .response(let booksList, _):
-        self.responseGoogleBookList = booksList
-      }
-    }
-    
-    // Do any additional setup after loading the view, typically from a nib.
+    onViewLoad()
+    reloadTableView()
   }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
   }
 
 }
 
+// MARK:- VIPER Setup
+extension BooksListView {
+
+  func onViewLoad() {
+    presenter = BooksListPresenter()
+    let interactor = BooksListInteractor()
+    let wireframe = BooksListWireframe()
+    presenter.interactor = interactor
+    presenter.wireframe = wireframe
+    presenter.view = self
+    wireframe.view = self
+    interactor.presenter = presenter
+  }
+
+}
+
+// MARK:- View Actions
 extension BooksListView {
 
   func showHUD() {
@@ -64,32 +69,28 @@ extension BooksListView {
     }
   }
 
-}
-
-extension BooksListView: UITableViewDataSource {
-
-  func numberOfSections(in tableView: UITableView) -> Int {
-    return 1
-  }
-
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return booksArray.count
-  }
-
-  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-    if let bookCell = cell as? BookListItemView {
-      bookCell.setupCell(booksArray[indexPath.row])
+  func showSnackBarError(_ error: String) {
+    let snackbar = TTGSnackbar(message: error, duration: .short)
+    DispatchQueue.main.async {
+      snackbar.show()
     }
-    return cell
   }
 
-}
-
-extension BooksListView: UITableViewDelegate {
-
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    tableView.deselectRow(at: indexPath, animated: true)
+  func reloadTableView() {
+    DispatchQueue.main.async {
+      if self.booksArray.count > 0 {
+        self.tableView.isHidden = false
+        self.tableView.reloadData()
+        self.infoLabel.text = ""
+      } else {
+        self.tableView.isHidden = true
+        if (self.searchBar.text?.characters.count)! > 0 {
+          self.infoLabel.text = "No records found."
+        } else {
+          self.infoLabel.text = "Please enter text to search."
+        }
+      }
+    }
   }
 
 }

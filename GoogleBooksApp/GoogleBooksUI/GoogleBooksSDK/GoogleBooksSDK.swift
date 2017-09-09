@@ -21,6 +21,7 @@ public class GoogleBooksSDK: NSObject {
                                   handler: @escaping (GoogleBooksListResponse) -> Void) {
 
     if let previousTask = getBooksListTask {
+      previousTask.cancel()
       previousTask.suspend()
       getBooksListTask = nil
     }

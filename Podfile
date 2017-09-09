@@ -23,7 +23,9 @@ target 'GoogleBooksApp' do
 
   # A pod for showing progress hud
   pod 'MBProgressHUD'
-  
+
+  # A pod for showing snackbar message
+  pod 'TTGSnackbar'
   # Pods for GoogleBooksApp
 
 end

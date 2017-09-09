@@ -62,4 +62,5 @@ class BookListItemView: UITableViewCell {
     self.bookThumbImageView.layer.shadowOpacity = 10
     self.bookThumbImageView.layer.shadowColor = UIColor.black.cgColor
   }
+
 }

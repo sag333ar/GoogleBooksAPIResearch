@@ -8,6 +8,7 @@ PODS:
     - SDWebImage/Core (= 4.1.0)
   - SDWebImage/Core (4.1.0)
   - SKRequestManager (1.0.11)
+  - TTGSnackbar (1.5.2)
 
 DEPENDENCIES:
   - Crashlytics
@@ -16,6 +17,7 @@ DEPENDENCIES:
   - MBProgressHUD
   - SDWebImage
   - SKRequestManager
+  - TTGSnackbar
 
 SPEC CHECKSUMS:
   Crashlytics: 95d05f4e4c19a771250c4bd9ce344d996de32bbf
@@ -24,7 +26,8 @@ SPEC CHECKSUMS:
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   SDWebImage: 0e435c14e402a6730315a0fb79f95e68654d55a4
   SKRequestManager: b897a04d5bb16dbf8fe9b1bc050ebbdff3c3e3ba
+  TTGSnackbar: ca69045c72188fef27f575581052d72aff15abe2
 
-PODFILE CHECKSUM: 5465b48c9cb3d9e357727a751327687b3d417c17
+PODFILE CHECKSUM: 390fcd49adae423d9befa9d352ad30ca132c85c4
 
 COCOAPODS: 1.2.1

@@ -9,3 +9,4 @@ Working on Google Books API research work
 4. SKRequestManager - for request & json response management
 5. SDWebImage - for async image caching management
 6. MBProgressHUD - for displaying progress indication
+7. TTGSnackbar - for showing snackbar message

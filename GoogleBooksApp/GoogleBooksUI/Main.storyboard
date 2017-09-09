@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Books List View-->
+        <!--Google Books-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="BooksListView" customModule="GoogleBooksApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Google Books" automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="BooksListView" customModule="GoogleBooksApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -26,6 +26,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="88" id="mv8-xb-Re4"/>
                                 </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" keyboardAppearance="alert" returnKeyType="search"/>
                                 <scopeButtonTitles>
                                     <string>ebooks</string>
@@ -33,7 +34,16 @@
                                     <string>Paid</string>
                                     <string>Partial</string>
                                 </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="fai-ym-JhH"/>
+                                </connections>
                             </searchBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OHt-Jy-IaL">
+                                <rect key="frame" x="0.0" y="152" width="375" height="515"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="230" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zds-IE-G0P">
                                 <rect key="frame" x="0.0" y="152" width="375" height="515"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -111,16 +121,22 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="zds-IE-G0P" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="5H5-g1-QaM"/>
+                            <constraint firstAttribute="trailing" secondItem="OHt-Jy-IaL" secondAttribute="trailing" id="D07-0S-j4A"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="OHt-Jy-IaL" secondAttribute="bottom" id="JBl-xE-gc0"/>
+                            <constraint firstItem="OHt-Jy-IaL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="JfI-pq-C6X"/>
                             <constraint firstItem="zds-IE-G0P" firstAttribute="top" secondItem="yGI-Yw-mRI" secondAttribute="bottom" id="d5j-Hj-KfG"/>
                             <constraint firstItem="yGI-Yw-mRI" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="eV8-oy-fnl"/>
                             <constraint firstAttribute="trailing" secondItem="zds-IE-G0P" secondAttribute="trailing" id="nOb-ad-Sb8"/>
                             <constraint firstItem="yGI-Yw-mRI" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="pFu-U8-TJ2"/>
+                            <constraint firstItem="OHt-Jy-IaL" firstAttribute="top" secondItem="yGI-Yw-mRI" secondAttribute="bottom" id="uNQ-Zo-n9X"/>
                             <constraint firstAttribute="trailing" secondItem="yGI-Yw-mRI" secondAttribute="trailing" id="yxO-iv-EVI"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zds-IE-G0P" secondAttribute="bottom" id="z8T-UH-inE"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="plc-iX-Oxx"/>
                     <connections>
+                        <outlet property="infoLabel" destination="OHt-Jy-IaL" id="5JU-Qh-RNS"/>
+                        <outlet property="searchBar" destination="yGI-Yw-mRI" id="1NE-AR-GLe"/>
                         <outlet property="tableView" destination="zds-IE-G0P" id="7LC-A7-nGR"/>
                     </connections>
                 </viewController>
@@ -135,6 +151,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="J6E-7b-Ntd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </navigationBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="8Zo-eH-Erf"/>
