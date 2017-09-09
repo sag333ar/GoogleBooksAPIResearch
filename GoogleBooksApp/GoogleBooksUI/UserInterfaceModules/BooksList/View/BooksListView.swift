@@ -29,7 +29,9 @@ class BooksListView: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    showHUD()
     GoogleBooksSDK.shared.executeGetBooksList("a", filter: GoogleBooksFilter.free_ebooks) { (response) in
+      self.hideHUD()
       switch response {
       case .error(_ , let error):
         print("Error occured \(error.localizedDescription)")
@@ -45,7 +47,23 @@ class BooksListView: UIViewController {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
-  
+
+}
+
+extension BooksListView {
+
+  func showHUD() {
+    DispatchQueue.main.async {
+      MBProgressHUD.showAdded(to: self.tableView, animated: false)
+    }
+  }
+
+  func hideHUD() {
+    DispatchQueue.main.async {
+      MBProgressHUD.hide(for: self.tableView, animated: false)
+    }
+  }
+
 }
 
 extension BooksListView: UITableViewDataSource {

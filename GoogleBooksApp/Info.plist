@@ -51,5 +51,10 @@
 	<string>v1</string>
 	<key>PATH</key>
 	<string>volumes</string>
+  <key>NSAppTransportSecurity</key>
+  <dict>
+    <key>NSAllowsArbitraryLoads</key>
+    <true/>
+  </dict>
 </dict>
 </plist>
