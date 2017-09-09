@@ -19,14 +19,14 @@ Working on Google Books API research work
 
 | Screenshot | Description |
 | -----------| ----------- |
-| ![Image1]()| Application Logo |
-| ![Image2]()| Dashbloard |
-| ![Image3]()| Search - loading |
-| ![Image4]()| Search - Results |
-| ![Image5]()| Search - Paging |
-| ![Image6]()| Book Details |
-| ![Image7]()| Book Reader |
-| ![Image8]()| Book Reader Landscape |
+| ![Image1](https://github.com/sag333ar/GoogleBooksAPIResearch/blob/master/Screenshots/01.png?raw=true)| Application Logo |
+| ![Image2](https://github.com/sag333ar/GoogleBooksAPIResearch/blob/master/Screenshots/02.png?raw=true)| Dashbloard |
+| ![Image3](https://github.com/sag333ar/GoogleBooksAPIResearch/blob/master/Screenshots/03.png?raw=true)| Search - loading |
+| ![Image4](https://github.com/sag333ar/GoogleBooksAPIResearch/blob/master/Screenshots/04.png?raw=true)| Search - Results |
+| ![Image5](https://github.com/sag333ar/GoogleBooksAPIResearch/blob/master/Screenshots/05.png?raw=true)| Search - Paging |
+| ![Image6](https://github.com/sag333ar/GoogleBooksAPIResearch/blob/master/Screenshots/06.png?raw=true)| Book Details |
+| ![Image7](https://github.com/sag333ar/GoogleBooksAPIResearch/blob/master/Screenshots/07.png?raw=true)| Book Reader |
+| ![Image8](https://github.com/sag333ar/GoogleBooksAPIResearch/blob/master/Screenshots/08.png?raw=true)| Book Reader Landscape |
 
 ### Dependencies
 
