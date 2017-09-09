@@ -13,11 +13,13 @@ public struct GoogleBooksList: Decodable {
 
   let kind: String?
   let totalItems: Int?
+  let items: [Book]?
 
   // MARK: - Deserialization
   public init?(json: JSON) {
     self.kind = "kind" <~~ json
     self.totalItems = "totalItems" <~~ json
+    self.items = "items" <~~ json
   }
 
 }

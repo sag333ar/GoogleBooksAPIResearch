@@ -25,7 +25,13 @@ public class GoogleBooksListService {
                                  filter: GoogleBooksFilter,
                                  handler: @escaping (GoogleBooksListResponse) -> Void) -> URLSessionDataTask {
 
-    let queryParams = RequestManager.generateQueryString(["q": query, "filter": filter.description])
+    let queryParams = RequestManager.generateQueryString(
+      [
+        "q": query,
+        "filter": filter.description,
+        "maxResults" : "40",
+        "startIndex" : "0"
+      ])
     let urlString = ServiceURL.shared.baseURL + queryParams
     let request = RequestManager.generateRequest(urlString,
                                    dictionaryOfHeaders: nil,

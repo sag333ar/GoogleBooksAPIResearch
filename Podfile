@@ -18,6 +18,12 @@ target 'GoogleBooksApp' do
   # A custom pod developed by myself (https://github.com/sag333ar/SKRequestManager)
   pod 'SKRequestManager'
 
+  # A pod for async image caching management
+  pod 'SDWebImage'
+
+  # A pod for showing progress hud
+  pod 'MBProgressHUD'
+  
   # Pods for GoogleBooksApp
 
 end

@@ -13,6 +13,7 @@ import Gloss
 public struct VolumeInfo: Decodable {
 
   let title: String?
+  let subtitle: String?
   let authors: [String]?
   let publishedDate: String?
   let industryIdentifiers: [IndustryIdentifier]?
@@ -32,6 +33,7 @@ public struct VolumeInfo: Decodable {
   // MARK: - Deserialization
   public init?(json: JSON) {
     self.title = "title" <~~ json
+    self.subtitle = "subtitle" <~~ json
     self.authors = "authors" <~~ json
     self.publishedDate = "publishedDate" <~~ json
     self.industryIdentifiers = "industryIdentifiers" <~~ json
