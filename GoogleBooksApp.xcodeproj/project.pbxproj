@@ -39,6 +39,7 @@
 		3185B6A91F64371C0049DB64 /* BookDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185B6A81F64371C0049DB64 /* BookDetailsPresenter.swift */; };
 		3185B6AB1F6437330049DB64 /* BookDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185B6AA1F6437330049DB64 /* BookDetailsView.swift */; };
 		3185B6AD1F6437650049DB64 /* BookDetailsWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185B6AC1F6437650049DB64 /* BookDetailsWireframe.swift */; };
+		3185B6AF1F644DEB0049DB64 /* BookDetailsView+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3185B6AE1F644DEB0049DB64 /* BookDetailsView+Setup.swift */; };
 		929AF8CB55197BE09F254D80 /* Pods_GoogleBooksApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D893B756495EFDC359AADD47 /* Pods_GoogleBooksApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -77,6 +78,7 @@
 		3185B6A81F64371C0049DB64 /* BookDetailsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookDetailsPresenter.swift; sourceTree = "<group>"; };
 		3185B6AA1F6437330049DB64 /* BookDetailsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookDetailsView.swift; sourceTree = "<group>"; };
 		3185B6AC1F6437650049DB64 /* BookDetailsWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BookDetailsWireframe.swift; sourceTree = "<group>"; };
+		3185B6AE1F644DEB0049DB64 /* BookDetailsView+Setup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BookDetailsView+Setup.swift"; sourceTree = "<group>"; };
 		BBA0F92613DA0AC341847D6A /* Pods-GoogleBooksApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleBooksApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoogleBooksApp/Pods-GoogleBooksApp.release.xcconfig"; sourceTree = "<group>"; };
 		C343981DABFBEF2C0BBB0E09 /* Pods-GoogleBooksApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoogleBooksApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoogleBooksApp/Pods-GoogleBooksApp.debug.xcconfig"; sourceTree = "<group>"; };
 		D893B756495EFDC359AADD47 /* Pods_GoogleBooksApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GoogleBooksApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -184,6 +186,7 @@
 			isa = PBXGroup;
 			children = (
 				3185B6AA1F6437330049DB64 /* BookDetailsView.swift */,
+				3185B6AE1F644DEB0049DB64 /* BookDetailsView+Setup.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -503,6 +506,7 @@
 			files = (
 				3150B0D81F63C0C000B358B2 /* IndustryIdentifier.swift in Sources */,
 				316314A61F63A7D500C40A42 /* AppDelegate.swift in Sources */,
+				3185B6AF1F644DEB0049DB64 /* BookDetailsView+Setup.swift in Sources */,
 				3185B6A21F6422510049DB64 /* KeyChainManager.swift in Sources */,
 				3150B0D71F63C0C000B358B2 /* ImageLink.swift in Sources */,
 				3185B6AB1F6437330049DB64 /* BookDetailsView.swift in Sources */,
