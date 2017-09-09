@@ -26,8 +26,20 @@ class BooksListView: UIViewController {
     super.viewDidLoad()
     onViewLoad()
     presenter.updateUserInterface()
+    
+    // Search Apple for the first time / on view did load - to not to show empty screen
+    perform(#selector(BooksListView.executeMockAppleSearchOnFirstTime), with: nil, afterDelay: 0.1)
   }
   
+  func executeMockAppleSearchOnFirstTime() {
+    searchBar.text = "Apple"
+    performDelayedSearch()
+  }
+
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+  }
+
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
   }

@@ -36,7 +36,7 @@ extension BooksListView: UISearchBarDelegate {
     NSObject.cancelPreviousPerformRequests(withTarget: self)
     perform(#selector(BooksListView.performSearch), with: nil, afterDelay: 0.75)
   }
-  
+
   func performSearch() {
     let filter = GoogleBooksFilter.fromInteger(self.searchBar.selectedScopeButtonIndex)
     if let text = searchBar.text, text.characters.count > 0 {

@@ -41,4 +41,41 @@ extension BooksListView: UITableViewDelegate {
     }
   }
 
+  func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    let book = booksArray[indexPath.row]
+    return getEditingAccessories(book)
+  }
+
+  func getEditingAccessories(_ book: Book) -> [UITableViewRowAction] {
+    var readBooksArray:[String] = []
+    if let saved = UserDefaults.standard.value(forKey: "readbooks") as? [String] {
+      readBooksArray = saved
+    }
+    if let bookid = book.id {
+      if readBooksArray.contains(bookid) {
+        let editAction = UITableViewRowAction(style: .normal, title: "Unread") { (rowAction, indexPath) in
+          if let index = readBooksArray.index(of: bookid) {
+            readBooksArray.remove(at: index)
+            UserDefaults.standard.setValue(readBooksArray, forKey: "readbooks")
+            UserDefaults.standard.synchronize()
+            self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+          }
+        }
+        editAction.backgroundColor = UIColor.red
+        return [editAction]
+      } else {
+        let editAction = UITableViewRowAction(style: .normal, title: "Read") { (rowAction, indexPath) in
+          readBooksArray.append(bookid)
+          UserDefaults.standard.setValue(readBooksArray, forKey: "readbooks")
+          UserDefaults.standard.synchronize()
+          self.tableView.reloadRows(at: [indexPath], with: UITableViewRowAnimation.fade)
+        }
+        editAction.backgroundColor = UIColor.blue
+        return [editAction]
+      }
+    } else {
+      return []
+    }
+  }
+
 }
