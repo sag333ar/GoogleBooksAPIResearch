@@ -16,6 +16,8 @@ class BookDetailsView: UIViewController {
   @IBOutlet weak var bookTitleLabel: UILabel!
   @IBOutlet weak var bookAuthorLabel: UILabel!
   @IBOutlet weak var bookSubtitleLabel: UILabel!
+  @IBOutlet weak var stackView: UIStackView!
+  @IBOutlet weak var scrollView: UIScrollView!
   
   var book: Book?
 
@@ -56,40 +58,65 @@ extension BookDetailsView {
 
   func loadUIData() {
     if let data = book?.volumeInfo?.title {
-      self.bookTitleLabel.text = data
+      bookTitleLabel.text = data
     } else {
-      self.bookTitleLabel.text = "Title not available"
+      bookTitleLabel.text = "Title not available"
     }
 
     if let data = book?.volumeInfo?.subtitle {
-      self.bookSubtitleLabel.text = data
+      bookSubtitleLabel.text = data
     } else {
-      self.bookSubtitleLabel.text = "Subtitle not available"
+      bookSubtitleLabel.text = "Subtitle not available."
+    }
+
+    if let data = book?.volumeInfo?.pageCount {
+      bookSubtitleLabel.text = bookSubtitleLabel.text!
+        + "\n\nThere are \(data) pages."
+    } else {
+      bookSubtitleLabel.text = bookSubtitleLabel.text!
+        + "\n\nNumber of pages info not available."
+    }
+
+    if let data = book?.accessInfo?.pdf?.isAvailable {
+      bookSubtitleLabel.text = bookSubtitleLabel.text!
+        + "\n\nPDF \(data == true ? "available." : "not available.")"
+    } else {
+      bookSubtitleLabel.text = bookSubtitleLabel.text!
+        + "\n\nPDF info is not available."
+    }
+
+    if let data = book?.volumeInfo?.printType {
+      bookSubtitleLabel.text = bookSubtitleLabel.text!
+        + "\n\nPrint type is \(data)"
+    } else {
+      bookSubtitleLabel.text = bookSubtitleLabel.text!
+        + "\n\nPrint type info is not available."
     }
 
     if let data = book?.volumeInfo?.authors {
-      self.bookAuthorLabel.text = data.joined(separator: ", ")
+      bookAuthorLabel.text = data.joined(separator: ", ")
     } else {
-      self.bookAuthorLabel.text = "Author not available"
+      bookAuthorLabel.text = "Author not available"
     }
 
-    self.bookThumbImageView.image = nil
-    self.bookThumbImageView.sd_setShowActivityIndicatorView(true)
-    self.bookThumbImageView.sd_setIndicatorStyle(.gray)
+    bookThumbImageView.image = nil
+    bookThumbImageView.sd_setShowActivityIndicatorView(true)
+    bookThumbImageView.sd_setIndicatorStyle(.gray)
     if let data = book?.volumeInfo?.imageLinks?.smallThumbnail, let url = URL(string: data) {
       self.bookThumbImageView.sd_setImage(with: url,
                                           completed: nil)
     }
-    self.applyShadowToBookThumb()
+    applyShadowToBookThumb()
+    scrollView.contentSize = CGSize(width: view.frame.size.width, height: stackView.frame.size.height+30)
   }
 
   func applyShadowToBookThumb() {
-    self.bookThumbImageView.layer.borderColor = UIColor.black.cgColor
-    self.bookThumbImageView.layer.borderWidth = 1
-    self.bookThumbImageView.layer.shadowOffset = CGSize(width: 3, height: 3)
-    self.bookThumbImageView.layer.shadowRadius = 2
-    self.bookThumbImageView.layer.shadowOpacity = 10
-    self.bookThumbImageView.layer.shadowColor = UIColor.black.cgColor
+    bookThumbImageView.layer.borderColor = UIColor.black.cgColor
+    bookThumbImageView.layer.borderWidth = 1
+    bookThumbImageView.layer.shadowOffset = CGSize(width: 3, height: 3)
+    bookThumbImageView.layer.shadowRadius = 2
+    bookThumbImageView.layer.shadowOpacity = 10
+    bookThumbImageView.layer.shadowColor = UIColor.black.cgColor
   }
 
 }

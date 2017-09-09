@@ -171,7 +171,7 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jqw-fg-wbc">
                                 <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1O8-Gl-m0T">
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1O8-Gl-m0T">
                                         <rect key="frame" x="0.0" y="0.0" width="376.5" height="603"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="0Ck-o0-GGN">
@@ -231,6 +231,9 @@
                                     <constraint firstItem="1O8-Gl-m0T" firstAttribute="centerX" secondItem="jqw-fg-wbc" secondAttribute="centerX" id="cxL-Yp-ahi"/>
                                     <constraint firstItem="1O8-Gl-m0T" firstAttribute="centerY" secondItem="jqw-fg-wbc" secondAttribute="centerY" id="hYb-1t-f3V"/>
                                 </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="8iG-lj-f8L" id="bJs-8k-CRl"/>
+                                </connections>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -246,6 +249,8 @@
                         <outlet property="bookSubtitleLabel" destination="rjr-tC-k6w" id="WUj-eu-Naa"/>
                         <outlet property="bookThumbImageView" destination="Ghk-gw-RfX" id="bmg-hH-Gab"/>
                         <outlet property="bookTitleLabel" destination="EsK-ac-09T" id="4al-Lp-kQK"/>
+                        <outlet property="scrollView" destination="jqw-fg-wbc" id="LUA-QW-yOU"/>
+                        <outlet property="stackView" destination="0Ck-o0-GGN" id="5sF-Kr-RPP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y8U-Wj-kZM" userLabel="First Responder" sceneMemberID="firstResponder"/>
