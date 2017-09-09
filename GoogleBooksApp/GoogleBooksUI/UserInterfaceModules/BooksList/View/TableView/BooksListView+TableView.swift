@@ -33,10 +33,10 @@ extension BooksListView: UITableViewDelegate {
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     tableView.deselectRow(at: indexPath, animated: true)
-    performSegue(withIdentifier: "booksToBooksDetailsSegue", sender: nil)
+    presenter.showBookDetailsScreen(with: booksArray[indexPath.row])
   }
 
-  func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+  func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
     if indexPath.row == (self.booksArray.count-1) {
       presenter.didReachEndOfTable()
     }

@@ -27,15 +27,19 @@ class BooksListPresenter {
     }
   }
 
-  private func executeSearch(_ query: String, start: Int = 0, filter: GoogleBooksFilter) {
-    view.showHUD()
+  fileprivate func executeSearch(_ query: String, start: Int = 0, filter: GoogleBooksFilter) {
     self.start = start
     if start == 0 {
       view.booksArray = []
       view.reloadTableView()
+      view.showHUD()
+    } else {
+      view.showNetworkIndicator()
+      view.showSnackBarError("Fetching more books. Please wait...\nDeveloper by: Sagar R. Kothari")
     }
     interactor.executeSearch(query, start: start, filter: filter) { (response) in
       self.view.hideHUD()
+      self.view.hideNetworkIndicator()
       switch response {
       case .error(_ , let error):
         self.view.showSnackBarError(error.localizedDescription)
@@ -43,26 +47,6 @@ class BooksListPresenter {
         self.responseGoogleBookList = booksList
         self.updateUserInterface()
       }
-    }
-  }
-
-  func searchBarDidUpdate(_ query: String, filter: GoogleBooksFilter) {
-    var query = query.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-    if query.characters.count > 0 {
-      executeSearch(query, filter: filter)
-    } else {
-      view.booksArray = []
-      updateUserInterface()
-    }
-  }
-
-  func didReachEndOfTable() {
-    let filter = GoogleBooksFilter.fromInteger(view.searchBar.selectedScopeButtonIndex)
-    if let items = responseGoogleBookList?.totalItems,
-      let text = view.searchBar.text,
-      text.characters.count > 0,
-      view.booksArray.count < items {
-      executeSearch(text, start: view.booksArray.count, filter: filter)
     }
   }
 
@@ -74,6 +58,7 @@ class BooksListPresenter {
     }
   }
 
+  // MARK: Save to Keychain
   func getEditingAccessories(_ book: Book) -> [UITableViewRowAction] {
     var readBooksArray:[String] = GoogleBooksSDK.shared.loadReadBooks()
     if let bookid = book.id {
@@ -100,5 +85,48 @@ class BooksListPresenter {
       return []
     }
   }
+
+}
+
+// MARK:- Search Bar text or scope change
+extension BooksListPresenter {
+
+  func searchBarDidUpdate(_ query: String, filter: GoogleBooksFilter) {
+    var query = query.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+    if query.characters.count > 0 {
+      executeSearch(query, filter: filter)
+    } else {
+      view.booksArray = []
+      updateUserInterface()
+    }
+  }
+
+}
+
+// MARK:- Paging
+extension BooksListPresenter {
+
+  func didReachEndOfTable() {
+    let filter = GoogleBooksFilter.fromInteger(view.searchBar.selectedScopeButtonIndex)
+    if let items = responseGoogleBookList?.totalItems,
+      let text = view.searchBar.text,
+      text.characters.count > 0,
+      view.booksArray.count < items {
+      executeSearch(text, start: view.booksArray.count, filter: filter)
+    }
+  }
+
+}
+
+// MARK:- Communication to Wireframe
+extension BooksListPresenter {
+
+  func showBookDetailsScreen(with book: Book) {
+    wireframe.showBookDetailsScreen(with: book)
+  }
   
+  func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    wireframe.prepare(for: segue, sender: sender)
+  }
+
 }
