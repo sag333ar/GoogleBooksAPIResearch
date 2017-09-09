@@ -35,4 +35,10 @@ extension BooksListView: UITableViewDelegate {
     tableView.deselectRow(at: indexPath, animated: true)
   }
   
+  func tableView(_ tableView: UITableView, didEndDisplaying cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+    if indexPath.row == (self.booksArray.count-1) {
+      presenter.didReachEndOfTable()
+    }
+  }
+
 }

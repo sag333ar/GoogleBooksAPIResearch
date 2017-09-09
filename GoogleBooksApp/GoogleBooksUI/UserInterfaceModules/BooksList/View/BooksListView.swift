@@ -19,17 +19,13 @@ class BooksListView: UIViewController {
 
   var presenter: BooksListPresenter!
 
-  var booksArray: [Book] = [] {
-    didSet {
-      reloadTableView()
-    }
-  }
+  var booksArray: [Book] = []
 
   // MARK:- Common functions
   override func viewDidLoad() {
     super.viewDidLoad()
     onViewLoad()
-    reloadTableView()
+    presenter.updateUserInterface()
   }
   
   override func didReceiveMemoryWarning() {
@@ -42,6 +38,7 @@ class BooksListView: UIViewController {
 extension BooksListView {
 
   func onViewLoad() {
+    self.title = "gBooks From Sagar Kothari"
     presenter = BooksListPresenter()
     let interactor = BooksListInteractor()
     let wireframe = BooksListWireframe()
@@ -59,6 +56,7 @@ extension BooksListView {
 
   func showHUD() {
     DispatchQueue.main.async {
+      self.tableView.isHidden = false
       MBProgressHUD.showAdded(to: self.tableView, animated: false)
     }
   }
@@ -76,20 +74,26 @@ extension BooksListView {
     }
   }
 
+  func showTableData() {
+    
+  }
+  
+  func showErrorMessage() {
+    DispatchQueue.main.async {
+      self.tableView.isHidden = true
+      if let text = self.searchBar.text, text.characters.count > 0 {
+        self.infoLabel.text = "No records found."
+      } else {
+        self.infoLabel.text = "Please enter text to search."
+      }
+    }
+  }
+  
   func reloadTableView() {
     DispatchQueue.main.async {
-      if self.booksArray.count > 0 {
-        self.tableView.isHidden = false
-        self.tableView.reloadData()
-        self.infoLabel.text = ""
-      } else {
-        self.tableView.isHidden = true
-        if (self.searchBar.text?.characters.count)! > 0 {
-          self.infoLabel.text = "No records found."
-        } else {
-          self.infoLabel.text = "Please enter text to search."
-        }
-      }
+      self.tableView.isHidden = false
+      self.tableView.reloadData()
+      self.infoLabel.text = ""
     }
   }
 

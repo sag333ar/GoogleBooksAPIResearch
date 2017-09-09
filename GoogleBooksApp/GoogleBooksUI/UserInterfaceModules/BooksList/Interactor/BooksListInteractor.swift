@@ -11,9 +11,9 @@ import UIKit
 class BooksListInteractor {
   var presenter: BooksListPresenter!
   
-  func executeSearch(_ query: String, filter: GoogleBooksFilter, handler: @escaping (GoogleBooksListResponse) -> Void) {
+  func executeSearch(_ query: String, start: Int, filter: GoogleBooksFilter, handler: @escaping (GoogleBooksListResponse) -> Void) {
     let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-    GoogleBooksSDK.shared.executeGetBooksList(query, filter: filter) { (response) in
+    GoogleBooksSDK.shared.executeGetBooksList(query, filter: filter, start: start) { (response) in
       handler(response)
     }
   }

@@ -31,4 +31,21 @@ public enum GoogleBooksFilter: String {
     }
   }
 
+  public static func fromInteger(_ value: Int) -> GoogleBooksFilter {
+    switch value {
+    case 0:
+      return GoogleBooksFilter.ebooks
+    case 1:
+      return GoogleBooksFilter.free_ebooks
+    case 2:
+      return GoogleBooksFilter.full
+    case 3:
+      return GoogleBooksFilter.paid_ebooks
+    case 4:
+      return GoogleBooksFilter.partial
+    default:
+      return GoogleBooksFilter.ebooks
+    }
+  }
+
 }

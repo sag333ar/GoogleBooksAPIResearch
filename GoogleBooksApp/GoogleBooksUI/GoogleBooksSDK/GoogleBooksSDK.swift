@@ -18,6 +18,7 @@ public class GoogleBooksSDK: NSObject {
 
   public func executeGetBooksList(_ query: String,
                                   filter: GoogleBooksFilter,
+                                  start: Int,
                                   handler: @escaping (GoogleBooksListResponse) -> Void) {
 
     if let previousTask = getBooksListTask {
@@ -27,6 +28,7 @@ public class GoogleBooksSDK: NSObject {
     }
     getBooksListTask = getBooksList.getBooksList(query,
                                                  filter: filter,
+                                                 start: start,
                                                  handler: handler)
   }
 

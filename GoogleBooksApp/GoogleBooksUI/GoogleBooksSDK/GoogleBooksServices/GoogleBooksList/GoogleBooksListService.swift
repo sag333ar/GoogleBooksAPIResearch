@@ -23,6 +23,7 @@ public class GoogleBooksListService {
 
   public func getBooksList(_ query: String,
                                  filter: GoogleBooksFilter,
+                                 start: Int,
                                  handler: @escaping (GoogleBooksListResponse) -> Void) -> URLSessionDataTask {
 
     let queryParams = RequestManager.generateQueryString(
@@ -30,7 +31,7 @@ public class GoogleBooksListService {
         "q": query,
         "filter": filter.description,
         "maxResults": "40",
-        "startIndex": "0",
+        "startIndex": "\(start)",
         "key": ServiceURL.shared.key
       ])
     let urlString = ServiceURL.shared.baseURL + queryParams
@@ -42,14 +43,13 @@ public class GoogleBooksListService {
     return RequestManager.invokeRequestForJSON(request) { (response: JSONResponse) in
       switch response {
       case .array(_, let urlResponse):
-        print("Invalid response received")
 
         handler(GoogleBooksListResponse.error(
           urlResponse,
           GoogleBooksListService.responseArrayError))
 
       case .dictionary(let object, let urlResponse):
-        print("Valid response received\n\(object)")
+        
         guard let googleBooksList = GoogleBooksList(json: object) else {
 
           handler(GoogleBooksListResponse.error(
